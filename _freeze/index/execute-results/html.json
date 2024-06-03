@@ -1,7 +1,7 @@
 {
-  "hash": "904756958aabeed3ebf288f439e40bad",
+  "hash": "fa8e0018a783bade84d913b7a4a4c6db",
   "result": {
-    "markdown": "## Title of Website\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n:::\n",
+    "markdown": "---\ntoc: false\n---\n\n## Title of Website\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
