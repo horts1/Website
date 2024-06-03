@@ -1,30 +1,30 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Horace Tsai",
+    "objectID": "Projects.html",
+    "href": "Projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 3\n\n[1] 4\n\n\n\nprint(\"hello!\")\n\n[1] \"hello!\""
+    "text": "Here are the links to some of my projects:\nInsert Links\n\nprint(\"hello!\")\n\n[1] \"hello!\"\n\nprint(\"bye\")\n\n[1] \"bye\""
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Horace Tsai",
+    "section": "",
+    "text": "print(\"hello!\")\n\n[1] \"hello!\""
   },
   {
     "objectID": "index.html#title-of-website",
     "href": "index.html#title-of-website",
     "title": "Horace Tsai",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 3\n\n[1] 4\n\n\n\nprint(\"hello!\")\n\n[1] \"hello!\""
-  },
-  {
-    "objectID": "Projects.html",
-    "href": "Projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Here are the links to some of my projects:\nInsert Links\n\nsample(1:100)\n\n  [1]  29  30  20  77  81  12  94   5  69  61  24  70  18  37  48  35  66  54\n [19]   8  84  62  68  25   7  87  58 100  15  11  33  21  96  17  53  27  59\n [37]  99  55  76  41  45   1  26  14  63  19  97  92  79  80  47  85  39  65\n [55]  22  78  49  91  38  10  50  95  73  57  75   9  71  36  72  44  90  23\n [73]  82  56  88  32   4  93  46   6  74   2  34  13  86  83  16  89  64  31\n [91]  67  42  40  28  60  52  51   3  98  43\n\nprint(\"hello!\")\n\n[1] \"hello!\"\n\nprint(\"bye\")\n\n[1] \"bye\""
+    "text": "print(\"hello!\")\n\n[1] \"hello!\""
   }
 ]

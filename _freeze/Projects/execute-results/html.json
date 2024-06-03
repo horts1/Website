@@ -1,8 +1,10 @@
 {
-  "hash": "2c3655917cd233b3eab7f1b6f9d120db",
+  "hash": "56cfc94a9c0ee0aa2f2203f792a84689",
   "result": {
-    "markdown": "---\ntitle: \"Projects\"\n---\n\n\nHere are the links to some of my projects:\n\n*Insert Links*\n\n\n::: {.cell}\n\n```{.r .cell-code}\nsample(1:100)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n  [1]  29  30  20  77  81  12  94   5  69  61  24  70  18  37  48  35  66  54\n [19]   8  84  62  68  25   7  87  58 100  15  11  33  21  96  17  53  27  59\n [37]  99  55  76  41  45   1  26  14  63  19  97  92  79  80  47  85  39  65\n [55]  22  78  49  91  38  10  50  95  73  57  75   9  71  36  72  44  90  23\n [73]  82  56  88  32   4  93  46   6  74   2  34  13  86  83  16  89  64  31\n [91]  67  42  40  28  60  52  51   3  98  43\n```\n:::\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n\n```{.r .cell-code}\nprint(\"bye\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"bye\"\n```\n:::\n:::\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Projects\"\n---\n\n\nHere are the links to some of my projects:\n\n*Insert Links*\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n\n```{.r .cell-code}\nprint(\"bye\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"bye\"\n```\n:::\n:::\n",
+    "supporting": [
+      "Projects_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

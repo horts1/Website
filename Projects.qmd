@@ -7,7 +7,6 @@ Here are the links to some of my projects:
 *Insert Links*
 
 ```{r}
-sample(1:100)
 print("hello!")
 print("bye")
 ```
