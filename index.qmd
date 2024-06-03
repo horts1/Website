@@ -1,8 +1,6 @@
 ---
 toc: false
 ---
-## Title of Website
+## Statistical Analysis
 
-```{r}
-print("hello!")
-```
+The purpose of this website is to display my statistical analysis knowledge through different projects.

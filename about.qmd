@@ -2,5 +2,5 @@
 title: "About"
 ---
 
-About this site
+*Add about me*
 

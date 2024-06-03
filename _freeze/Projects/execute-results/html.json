@@ -1,10 +1,8 @@
 {
-  "hash": "56cfc94a9c0ee0aa2f2203f792a84689",
+  "hash": "d93b4902079b1892bd1c96a55368d48a",
   "result": {
-    "markdown": "---\ntitle: \"Projects\"\n---\n\n\nHere are the links to some of my projects:\n\n*Insert Links*\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n\n```{.r .cell-code}\nprint(\"bye\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"bye\"\n```\n:::\n:::\n",
-    "supporting": [
-      "Projects_files"
-    ],
+    "markdown": "---\ntitle: \"Projects\"\ntoc: true\n---\n\n\nHere are the links to some of my projects:\n\n*Insert Links*\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n\n```{.r .cell-code}\nprint(\"bye\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"bye\"\n```\n:::\n:::\n",
+    "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

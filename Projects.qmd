@@ -1,14 +1,14 @@
 ---
 title: "Projects"
+toc: true
 ---
 
 Here are the links to some of my projects:
 
+## R Projects:
 *Insert Links*
 
-```{r}
-print("hello!")
-print("bye")
-```
+## Python Projects:
+*Insert Links*
 
 

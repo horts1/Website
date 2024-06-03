@@ -1,0 +1,51 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Horace Tsai",
+    "section": "",
+    "text": "The purpose of this website is to display my statistical analysis knowledge through different projects."
+  },
+  {
+    "objectID": "index.html#title-of-website",
+    "href": "index.html#title-of-website",
+    "title": "Horace Tsai",
+    "section": "",
+    "text": "print(\"hello!\")\n\n[1] \"hello!\""
+  },
+  {
+    "objectID": "index.html#statistical-analysis",
+    "href": "index.html#statistical-analysis",
+    "title": "Horace Tsai",
+    "section": "",
+    "text": "The purpose of this website is to display my statistical analysis knowledge through different projects."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "Add about me"
+  },
+  {
+    "objectID": "Projects.html",
+    "href": "Projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Here are the links to some of my projects:"
+  },
+  {
+    "objectID": "Projects.html#r-projects",
+    "href": "Projects.html#r-projects",
+    "title": "Projects",
+    "section": "R Projects:",
+    "text": "R Projects:\nInsert Links"
+  },
+  {
+    "objectID": "Projects.html#python-projects",
+    "href": "Projects.html#python-projects",
+    "title": "Projects",
+    "section": "Python Projects:",
+    "text": "Python Projects:\nInsert Links"
+  }
+]

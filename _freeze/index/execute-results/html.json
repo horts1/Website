@@ -1,7 +1,7 @@
 {
-  "hash": "fa8e0018a783bade84d913b7a4a4c6db",
+  "hash": "ca32e6675de40b77c98d6cd84e22c95f",
   "result": {
-    "markdown": "---\ntoc: false\n---\n\n## Title of Website\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n:::\n",
+    "markdown": "---\ntoc: false\n---\n\n## Statistical Analysis\n\nThe purpose of this website is to display my statistical analysis knowledge through different projects.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprint(\"hello!\")\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] \"hello!\"\n```\n:::\n:::\n",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"
