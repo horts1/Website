@@ -6,8 +6,6 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
-      - href: about.qmd
         text: About Me
       - href: Projects.qmd
         text: Projects
