@@ -1,13 +1,18 @@
 ---
 title: "About"
 image: pfp.jpg
-about: 
-  template: trestles
-  links:
-  - text: LinkedIn
-    url: "https://www.linkedin.com/in/horacetsai/"
-  - text: Email
-    url: "mailto:tsaihoraceh@gmail.com"
+about:
+    template: trestles
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          url: https://www.linkedin.com/in/horacetsai/
+        - icon: inbox-fill
+          text: Email
+          url: mailto:tsaihoraceh@gmail.com
+        - icon: github
+          text: Github
+          url: https://github.com/horts1
 toc: false
 ---
 
