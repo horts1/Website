@@ -1,0 +1,44 @@
+---
+title: "Credit"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+```{python}
+import pandas as pd
+import os
+os.getcwd()
+data_info = pd.read_csv(
+    'c:\\Users\\HoraceTsai\\Documents\\Jupyter\\TensorFlow_FILES\DATA\\lending_club_info.csv',
+    index_col='LoanStatNew'
+    )
+```
+
+```{python}
+print(data_info.loc['revol_util']['Description'])
+```
+
+```{python}
+def feat_info(col_name):
+    print(data_info.loc[col_name]['Description'])
+```
+
+```{python}
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# might be needed depending on your version of Jupyter
+%matplotlib inline
+```
+
+```{python}
+df = pd.read_csv('c:\\Users\\HoraceTsai\\Documents\\Jupyter\\TensorFlow_FILES\DATA\\lending_club_loan_two.csv')
+```
+
+```{python}
+df.info()
+```

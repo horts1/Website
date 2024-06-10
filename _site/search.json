@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "python/index.html",
-    "href": "python/index.html",
-    "title": "Python Projects",
+    "objectID": "python/Credit.html",
+    "href": "python/Credit.html",
+    "title": "Credit",
     "section": "",
-    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
+    "text": "Code\nimport pandas as pd\nimport os\nos.getcwd()\ndata_info = pd.read_csv(\n    'c:\\\\Users\\\\HoraceTsai\\\\Documents\\\\Jupyter\\\\TensorFlow_FILES\\DATA\\\\lending_club_info.csv',\n    index_col='LoanStatNew'\n    )\n\n\n\n\nCode\nprint(data_info.loc['revol_util']['Description'])\n\n\nRevolving line utilization rate, or the amount of credit the borrower is using relative to all available revolving credit.\n\n\n\n\nCode\ndef feat_info(col_name):\n    print(data_info.loc[col_name]['Description'])\n\n\n\n\nCode\nimport pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n# might be needed depending on your version of Jupyter\n%matplotlib inline\n\n\n\n\nCode\ndf = pd.read_csv('c:\\\\Users\\\\HoraceTsai\\\\Documents\\\\Jupyter\\\\TensorFlow_FILES\\DATA\\\\lending_club_loan_two.csv')\n\n\n\n\nCode\ndf.info()\n\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 396030 entries, 0 to 396029\nData columns (total 27 columns):\n #   Column                Non-Null Count   Dtype  \n---  ------                --------------   -----  \n 0   loan_amnt             396030 non-null  float64\n 1   term                  396030 non-null  object \n 2   int_rate              396030 non-null  float64\n 3   installment           396030 non-null  float64\n 4   grade                 396030 non-null  object \n 5   sub_grade             396030 non-null  object \n 6   emp_title             373103 non-null  object \n 7   emp_length            377729 non-null  object \n 8   home_ownership        396030 non-null  object \n 9   annual_inc            396030 non-null  float64\n 10  verification_status   396030 non-null  object \n 11  issue_d               396030 non-null  object \n 12  loan_status           396030 non-null  object \n 13  purpose               396030 non-null  object \n 14  title                 394274 non-null  object \n 15  dti                   396030 non-null  float64\n 16  earliest_cr_line      396030 non-null  object \n 17  open_acc              396030 non-null  float64\n 18  pub_rec               396030 non-null  float64\n 19  revol_bal             396030 non-null  float64\n 20  revol_util            395754 non-null  float64\n 21  total_acc             396030 non-null  float64\n 22  initial_list_status   396030 non-null  object \n 23  application_type      396030 non-null  object \n 24  mort_acc              358235 non-null  float64\n 25  pub_rec_bankruptcies  395495 non-null  float64\n 26  address               396030 non-null  object \ndtypes: float64(12), object(15)\nmemory usage: 81.6+ MB"
   },
   {
     "objectID": "index.html",
@@ -56,10 +56,10 @@
     "text": "Python Projects:\nInsert Links"
   },
   {
-    "objectID": "python.html",
-    "href": "python.html",
-    "title": "Quarto Basics",
+    "objectID": "python/index.html",
+    "href": "python/index.html",
+    "title": "Python Projects",
     "section": "",
-    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\n\n\nCode\nprint(\"hello!\")\n\n\nhello!"
+    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\nLoan Status"
   }
 ]
