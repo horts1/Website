@@ -5,10 +5,10 @@ toc: true
 
 Here are the links to some of my projects:
 
-## R Projects:
+## [R Projects:](/r/index.qmd)
 *Insert Links*
 
-## Python Projects:
+## [Python Projects:](/python/index.qmd)
 *Insert Links*
 
 
