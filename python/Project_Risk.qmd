@@ -1,0 +1,131 @@
+---
+title: "Project Risk Example"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+### Example of Dummy Data
+
+```{python}
+import pandas as pd
+import numpy as np
+
+# Create dummy data
+data = {
+    'ProjectID': range(1, 101),
+    'Duration': np.random.randint(10, 50, size=100),
+    'Budget': np.random.randint(50, 200, size=100),
+    'TeamSize': np.random.randint(5, 20, size=100),
+    'Complexity': np.random.randint(1, 10, size=100),
+    'PriorIssues': np.random.randint(0, 5, size=100),
+    'RiskEvent': np.random.randint(0, 2, size=100)  # 0 or 1
+}
+
+df = pd.DataFrame(data)
+df.head()
+```
+
+## Predicting if there is going to be a Risk Event during a project:
+
+### Logistic Regression 
+
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+
+# Split the data into features (X) and target (y)
+X = df[['Duration', 'Budget', 'TeamSize', 'Complexity', 'PriorIssues']]
+y = df['RiskEvent']
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+# Initialize and train the logistic regression model
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+# conf_matrix = confusion_matrix(y_test, y_pred)
+class_report = classification_report(y_test, y_pred)
+
+print("Logistic Regression Accuracy is:", format(accuracy,".0%"))
+
+# print(class_report)
+```
+
+### Random Forest 
+
+```{python}
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+
+# Initialize and train the Random Forest model with hyperparameter tuning
+param_grid = {
+    'n_estimators': [100, 200, 300],
+    'max_depth': [None, 10, 20, 30],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+
+rf = RandomForestClassifier(random_state=42)
+grid_search = GridSearchCV(estimator=rf, param_grid=param_grid, cv=3, n_jobs=-1, verbose=0)
+grid_search.fit(X_train, y_train)
+
+# Best parameters from grid search
+best_params = grid_search.best_params_
+
+# Train the best model
+best_rf = grid_search.best_estimator_
+best_rf.fit(X_train, y_train)
+
+# Predict on the test set
+y_pred = best_rf.predict(X_test)
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+# conf_matrix = confusion_matrix(y_test, y_pred)
+class_report = classification_report(y_test, y_pred)
+
+print("Random Forest Accuracy is:", format(accuracy,".0%"))
+
+# print(class_report)
+
+# best_params
+```
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Extract feature importances from the best model
+feature_importances = best_rf.feature_importances_
+
+# Create a DataFrame for better visualization
+features_df = pd.DataFrame({
+    'Feature': X.columns,
+    'Importance': feature_importances
+})
+
+# Sort the DataFrame by importance
+features_df = features_df.sort_values(by='Importance', ascending=False)
+
+# Display the feature importances
+print("Feature Importances:")
+print(features_df)
+
+# Plotting the feature importances
+plt.figure(figsize=(9, 5))
+sns.barplot(x='Importance', y='Feature', data=features_df, palette='viridis')
+plt.title('Feature Importances in Random Forest Model')
+plt.xlabel('Importance')
+plt.ylabel('Feature')
+plt.show()
+```

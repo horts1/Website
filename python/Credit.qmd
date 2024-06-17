@@ -42,3 +42,12 @@ df = pd.read_csv('c:\\Users\\HoraceTsai\\Documents\\Jupyter\\TensorFlow_FILES\DA
 ```{python}
 df.info()
 ```
+
+### Exploratory Data Analysis (EDA)
+
+```{python}
+sns.countplot(
+    x= "loan_status",
+    data= df)
+#inbalanced outcomes
+```
