@@ -28,6 +28,8 @@ plt.show()
 
 [Loan Status](/python/Credit.qmd)
 
+[Time Series Example](/python/Time_Series.qmd)
+
 [Project Risk Example](/python/Project_Risk.qmd)
 
 [Project Resource Allocation Example](/python/Project_Resource.qmd)

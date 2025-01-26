@@ -1,0 +1,97 @@
+---
+title: "Time Series Example"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+### Example of Dummy Data
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+from statsmodels.tsa.seasonal import seasonal_decompose
+from statsmodels.tsa.stattools import adfuller
+import warnings
+
+# Dummy dataset
+data = {
+    'Month': pd.date_range(start='2020-01-01', end='2023-12-01', freq='MS'),
+    'SuccessfulProjects': [10, 12, 15, 11, 13, 17, 14, 18, 16, 19, 17, 20] * 4,
+    'AvgHoursWorked': [160, 170, 150, 180, 140, 190, 165, 175, 155, 170, 160, 180] * 4,
+    'TeamSize': [5, 6, 7, 5, 8, 10, 9, 11, 6, 7, 8, 9] * 4,
+    'ProjectComplexity': [3, 4, 5, 6, 4, 7, 5, 6, 4, 5, 6, 7] * 4
+}
+df = pd.DataFrame(data)
+df.head()
+```
+
+### Exploratory Data Analysis
+
+```{python}
+df.set_index('Month', inplace=True)
+
+# Plotting the data
+df.plot(figsize=(12, 8), subplots=True)
+plt.show()
+
+# Decompose the time series (for successful projects only, for simplicity)
+decomposition = seasonal_decompose(df['SuccessfulProjects'], model='additive')
+fig = decomposition.plot()
+plt.show()
+```
+
+### Model Building
+
+```{python}
+from statsmodels.tsa.statespace.sarimax import SARIMAX
+
+# Suppress specific warnings
+warnings.filterwarnings("ignore", message="no frequency information was provided")
+
+# Splitting the data into training and testing sets
+train = df[:'2022']
+test = df['2023':]
+
+# Building the ARIMAX model with adjustments to improve convergence
+model = SARIMAX(
+    train['SuccessfulProjects'], 
+    exog=train[['AvgHoursWorked', 'TeamSize', 'ProjectComplexity']], 
+    order=(1, 1, 1),
+    enforce_stationarity=False,
+    enforce_invertibility=False
+)
+model_fit = model.fit(disp=False, maxiter=500, method='nm')
+
+# Summary of the model
+print(model_fit.summary())
+
+# Forecasting
+forecast = model_fit.get_forecast(steps=len(test), exog=test[['AvgHoursWorked', 'TeamSize', 'ProjectComplexity']])
+forecast_df = test.copy()
+forecast_df['Forecast'] = forecast.predicted_mean
+
+# Plotting the actual vs forecasted values
+plt.figure(figsize=(12, 8))
+plt.plot(train['SuccessfulProjects'], label='Training Data')
+plt.plot(test['SuccessfulProjects'], label='Actual Data')
+plt.plot(forecast_df['Forecast'], label='Forecasted Data', linestyle='--')
+plt.title('Project Success Forecast with Additional Variables')
+plt.xlabel('Date')
+plt.ylabel('Number of Successful Projects')
+plt.legend()
+plt.show()
+```
+
+### Model Evaluation
+
+```{python}
+from sklearn.metrics import mean_absolute_error, mean_squared_error
+
+# Evaluation metrics
+mae = mean_absolute_error(test['SuccessfulProjects'], forecast.predicted_mean)
+mse = mean_squared_error(test['SuccessfulProjects'], forecast.predicted_mean)
+print(f'Mean Absolute Error: {mae}')
+print(f'Mean Squared Error: {mse}')
+```
