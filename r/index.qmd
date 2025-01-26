@@ -5,3 +5,6 @@ format:
     code-fold: true
 toc: true
 ---
+
+[From Data to Diagnosis: Predicting Heart Disease Severity through Machine Learning](/docs/Heart%20Severity.pdf)
+---
