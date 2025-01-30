@@ -26,6 +26,8 @@ ax.grid(True)
 plt.show()
 ```
 
+[Shady Business: Testing the Power of Dark mode](/python/abTest.qmd)
+
 [Loan Status](/python/Credit.qmd)
 
 [Time Series Example](/python/Time_Series.qmd)
