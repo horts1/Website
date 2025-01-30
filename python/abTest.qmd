@@ -1,0 +1,161 @@
+---
+title: "Shady Business: Testing the Power of Dark mode"
+format:
+  html:
+    code-fold: true
+jupyter: python3
+---
+
+```{python}
+import pandas as pd
+import os
+os.getcwd()
+df = pd.read_csv(
+    'c:\\Users\\HoraceTsai\\Documents\\data\\ab_testing.csv'
+)
+df.head()
+
+```
+
+## Exploratory Data Analysis
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+import scipy.stats as stats
+
+summary_stats = df.groupby("Group")["Time Spent"].describe()
+summary_stats
+
+#plot 
+plt.figure(figsize=(10,6))
+sns.boxplot(
+    x = "Group",
+    y = "Time Spent",
+    data = df,
+    order = ["A", "B"],
+    palette = "Accent"
+)
+plt.title("Distribution of Time Spent by Group")
+plt.xlabel("Group")
+plt.ylabel("Time Spent (seconds)")
+plt.grid(False)
+plt.show()
+```
+
+```{python}
+#plot 
+plt.figure(figsize=(10,6))
+sns.histplot(
+    df,
+    x = "Time Spent",
+    hue = "Group",
+    kde = True,
+    bins = 30,
+    palette = "Accent",
+    alpha = 0.6,
+)
+plt.title("Distribution of Time Spent by Group")
+plt.xlabel("Group")
+plt.ylabel("Frequency")
+plt.legend(title="Group", 
+    labels=["A (White Background)", "B (Black Background)"], 
+    loc='upper left',
+    bbox_to_anchor=(1, 1)
+    )
+plt.grid(False)
+plt.show()
+# fairly similar distribution
+```
+
+
+```{python}
+group_A = df[df["Group"] == "A"]["Time Spent"]
+group_B = df[df["Group"] == "B"]["Time Spent"]
+
+t_stat, p_val = stats.ttest_ind(
+    group_A, 
+    group_B,
+    equal_var = False
+    )
+
+print(t_stat, p_val)
+# small t- stat meaning group a (white) has a slightly higher mean of time spent vs group B
+# however difference between the two gorups is not large compared to the variability of the data
+# therefore no signif diff between background colors 
+# changing website background does not meaningfully affect how long users stay
+```
+
+```{python}
+# Convert Conversion column to binary (Yes = 1, No = 0)
+df["Conversion"] = df["Conversion"].map({"Yes": 1, "No": 0})
+
+df.head()
+```
+
+```{python}
+# Calculate conversion rates for each group
+conversion_rates = df.groupby("Group")["Conversion"].mean().reset_index()
+
+# bar plot for conversion rates
+plt.figure(figsize =(8,5))
+sns.barplot(
+    x = "Group",
+    y = "Conversion",
+    data = conversion_rates,
+    palette = "Accent"
+)
+
+# Add annotations
+for index, row in conversion_rates.iterrows():
+    plt.text(index, row["Conversion"] + 0.01, f"{row['Conversion']*100:.2f}%", ha='center', fontsize=12)
+
+# Formatting the plot
+plt.title("Conversion Rate by Group (A vs. B)")
+plt.xlabel("Group")
+plt.ylabel("Conversion Rate")
+plt.ylim(0, 1)  # Ensuring y-axis goes from 0 to 1 (100% scale)
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+# Show the plot
+plt.show()
+```
+
+```{python}
+# Perform a chi-square test for conversion rates
+contingency_table = pd.crosstab(df["Group"], df["Conversion"])
+chi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)
+
+# Display conversion rates and test results
+
+chi2_stat, p_value
+```
+
+```{python}
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+ax.axis("tight")
+ax.axis("off")
+
+# Data for the table
+table_data = ["A", conversion_rates[0]], ["B", conversion_rates[1]]
+
+# Creating the table
+table = ax.table(cellText=table_data, colLabels=["Group", "Conversion Rate"], loc="center")
+
+plt.show()
+
+# from tabulate import tabulate
+
+# data = [["A", 0.12], ["B", 0.18]]
+# headers = ["Group", "Conversion Rate"]
+
+# print(tabulate(data, headers=headers, tablefmt="grid"))
+
+
+```
+
+```{python}
+print(conversion_rates[1])
+```
