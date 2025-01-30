@@ -68,7 +68,6 @@ plt.show()
 # fairly similar distribution
 ```
 
-
 ```{python}
 group_A = df[df["Group"] == "A"]["Time Spent"]
 group_B = df[df["Group"] == "B"]["Time Spent"]
