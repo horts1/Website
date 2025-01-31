@@ -126,6 +126,5 @@ contingency_table = pd.crosstab(df["Group"], df["Conversion"])
 chi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)
 
 # Display conversion rates and test results
-
 chi2_stat, p_value
 ```
