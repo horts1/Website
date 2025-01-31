@@ -129,32 +129,3 @@ chi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)
 
 chi2_stat, p_value
 ```
-
-```{python}
-import matplotlib.pyplot as plt
-
-fig, ax = plt.subplots()
-ax.axis("tight")
-ax.axis("off")
-
-# Data for the table
-table_data = ["A", conversion_rates[0]], ["B", conversion_rates[1]]
-
-# Creating the table
-table = ax.table(cellText=table_data, colLabels=["Group", "Conversion Rate"], loc="center")
-
-plt.show()
-
-# from tabulate import tabulate
-
-# data = [["A", 0.12], ["B", 0.18]]
-# headers = ["Group", "Conversion Rate"]
-
-# print(tabulate(data, headers=headers, tablefmt="grid"))
-
-
-```
-
-```{python}
-print(conversion_rates[1])
-```
