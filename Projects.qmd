@@ -14,5 +14,3 @@ Here are the links to some of my projects:
 -   [Shady Business: Testing the Power of Dark mode](/python/abTest.qmd)
 -   *insert link*
 -   *insert link*
--   *insert link*
--   *insert link*
