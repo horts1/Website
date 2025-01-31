@@ -6,6 +6,42 @@ format:
 jupyter: python3
 ---
 
+## Objective
+
+This A/B testing experiemnt aims to analyze the impact of website background color on user engagement and conversion rates. Specifically, I compare a white background (Group A, control group) with a black background (Group B, treatment group) to determine whether the change in design improves user interaction and the liklihood of conversions
+
+## Dataset Overview
+
+The dataset used for this was found on [Kaggle](https://www.kaggle.com/datasets/adarsh0806/ab-testing-practice/data). This is a synthetic dataset generated using random sampling techniques from the Python NumPy package. It simulates user activity on an imaginery retail website operating across different locations in the United Kingdom.
+
+## Experiemental Design
+
+- Control Group (A - White Background): Represents the default website setting.
+- Treament Group (B - Black Blackground): Represents the newly tested setting.
+
+Research Question: *Does changing the website background color influence user engangement and conversion rates*
+
+## Key Variables in the Dataset
+
+- User ID: Unique identifer for each user
+- Group: Indicator whether the user was in Group A (White Background) or Group B (Black Background)
+- Page Views: Number of pages viewed during the user's session
+- Time Spend (seconds): The total duartion the suer spent on the website
+- Conversion: Whether the user completed a desired action (e.g. purchase, signup, etc.) (Yes/No)
+- Device: Type of device used (e.g. Mobile, Desktop)
+- Location: The country in the UK where the user is based 
+
+## Statistical Methods Used
+
+To evaluate the impact of the background color change, I used: 
+
+- T-Test to compare the average time spent on the website between the tewo groups.
+- Chi-Square Test  to analyze differences in conversion rates between the groups. 
+
+## Significance of the Study
+
+A/B test is a crucial tool in user experience (UX) optimizatino and digital marketing. Findings from analysis such as this could help business make data-driven design decisions that enhance user engagement and improve conversion rates. 
+
 ```{python}
 import pandas as pd
 import os
@@ -16,8 +52,17 @@ df = pd.read_csv(
 df.head()
 
 ```
+## Methodology and Analysis
 
-## Exploratory Data Analysis
+To help us understand whether a black background (Group B) leads to better user engagement and conversions ocmpared to a white background (Group A), the following analysis was performed: 
+
+### Exploratory Data Analysis (EDA)
+
+Before conducting any statistical test, I explored the dataset to understand its structure and key distributions:
+
+- Summary statistics were calculated for **time spent** on the website accross both groups
+- boxplots and histograms were used to visualize the distribution of time spent
+- Bar charts were created to compare conversion rates between groups
 
 ```{python}
 import matplotlib.pyplot as plt
@@ -68,6 +113,8 @@ plt.show()
 # fairly similar distribution
 ```
 
+### Hypothesis Testing 
+
 ```{python}
 group_A = df[df["Group"] == "A"]["Time Spent"]
 group_B = df[df["Group"] == "B"]["Time Spent"]
@@ -88,8 +135,6 @@ print(t_stat, p_val)
 ```{python}
 # Convert Conversion column to binary (Yes = 1, No = 0)
 df["Conversion"] = df["Conversion"].map({"Yes": 1, "No": 0})
-
-df.head()
 ```
 
 ```{python}
@@ -128,3 +173,5 @@ chi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)
 # Display conversion rates and test results
 chi2_stat, p_value
 ```
+
+### Results and Visualizations

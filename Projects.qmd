@@ -5,11 +5,12 @@ toc: true
 
 Here are the links to some of my projects:
 
-## [R Projects:](/r/index.qmd)
+## R Projects:
 
--   [From Data to Diagnosis: Predicting Heart Disease Severity through Machine Learning](/docs/Heart%20Severity.pdf)
+### [From Data to Diagnosis: Predicting Heart Disease Severity through Machine Learning](/docs/Heart%20Severity.pdf)
 
-## [Python Projects:](/python/index.qmd)
+## Python Projects:
 
--   [Shady Business: Testing the Power of Dark mode](/python/abTest.qmd)
+### [Shady Business: Testing the Power of Dark mode](/python/abTest.qmd)
+
 -   *insert link*

@@ -152,7 +152,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link active" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+  <li><a href="#objective" id="toc-objective" class="nav-link active" data-scroll-target="#objective">Objective</a></li>
+  <li><a href="#dataset-overview" id="toc-dataset-overview" class="nav-link" data-scroll-target="#dataset-overview">Dataset Overview</a></li>
+  <li><a href="#experiemental-design" id="toc-experiemental-design" class="nav-link" data-scroll-target="#experiemental-design">Experiemental Design</a></li>
+  <li><a href="#key-variables-in-the-dataset" id="toc-key-variables-in-the-dataset" class="nav-link" data-scroll-target="#key-variables-in-the-dataset">Key Variables in the Dataset</a></li>
+  <li><a href="#statistical-methods-used" id="toc-statistical-methods-used" class="nav-link" data-scroll-target="#statistical-methods-used">Statistical Methods Used</a></li>
+  <li><a href="#significance-of-the-study" id="toc-significance-of-the-study" class="nav-link" data-scroll-target="#significance-of-the-study">Significance of the Study</a></li>
+  <li><a href="#methodology-and-analysis" id="toc-methodology-and-analysis" class="nav-link" data-scroll-target="#methodology-and-analysis">Methodology and Analysis</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-data-analysis-eda" id="toc-exploratory-data-analysis-eda" class="nav-link" data-scroll-target="#exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</a></li>
+  <li><a href="#hypothesis-testing" id="toc-hypothesis-testing" class="nav-link" data-scroll-target="#hypothesis-testing">Hypothesis Testing</a></li>
+  <li><a href="#results-and-visualizations" id="toc-results-and-visualizations" class="nav-link" data-scroll-target="#results-and-visualizations">Results and Visualizations</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -178,7 +189,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="1497b46c" class="cell" data-execution_count="1">
+<section id="objective" class="level2">
+<h2 class="anchored" data-anchor-id="objective">Objective</h2>
+<p>This A/B testing experiemnt aims to analyze the impact of website background color on user engagement and conversion rates. Specifically, I compare a white background (Group A, control group) with a black background (Group B, treatment group) to determine whether the change in design improves user interaction and the liklihood of conversions</p>
+</section>
+<section id="dataset-overview" class="level2">
+<h2 class="anchored" data-anchor-id="dataset-overview">Dataset Overview</h2>
+<p>The dataset used for this was found on <a href="https://www.kaggle.com/datasets/adarsh0806/ab-testing-practice/data">Kaggle</a>. This is a synthetic dataset generated using random sampling techniques from the Python NumPy package. It simulates user activity on an imaginery retail website operating across different locations in the United Kingdom.</p>
+</section>
+<section id="experiemental-design" class="level2">
+<h2 class="anchored" data-anchor-id="experiemental-design">Experiemental Design</h2>
+<ul>
+<li>Control Group (A - White Background): Represents the default website setting.</li>
+<li>Treament Group (B - Black Blackground): Represents the newly tested setting.</li>
+</ul>
+<p>Research Question: <em>Does changing the website background color influence user engangement and conversion rates</em></p>
+</section>
+<section id="key-variables-in-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="key-variables-in-the-dataset">Key Variables in the Dataset</h2>
+<ul>
+<li>User ID: Unique identifer for each user</li>
+<li>Group: Indicator whether the user was in Group A (White Background) or Group B (Black Background)</li>
+<li>Page Views: Number of pages viewed during the user’s session</li>
+<li>Time Spend (seconds): The total duartion the suer spent on the website</li>
+<li>Conversion: Whether the user completed a desired action (e.g.&nbsp;purchase, signup, etc.) (Yes/No)</li>
+<li>Device: Type of device used (e.g.&nbsp;Mobile, Desktop)</li>
+<li>Location: The country in the UK where the user is based</li>
+</ul>
+</section>
+<section id="statistical-methods-used" class="level2">
+<h2 class="anchored" data-anchor-id="statistical-methods-used">Statistical Methods Used</h2>
+<p>To evaluate the impact of the background color change, I used:</p>
+<ul>
+<li>T-Test to compare the average time spent on the website between the tewo groups.</li>
+<li>Chi-Square Test to analyze differences in conversion rates between the groups.</li>
+</ul>
+</section>
+<section id="significance-of-the-study" class="level2">
+<h2 class="anchored" data-anchor-id="significance-of-the-study">Significance of the Study</h2>
+<p>A/B test is a crucial tool in user experience (UX) optimizatino and digital marketing. Findings from analysis such as this could help business make data-driven design decisions that enhance user engagement and improve conversion rates.</p>
+<div id="0b990dcc" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -189,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <div>
 
 
@@ -263,9 +313,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="exploratory-data-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory Data Analysis</h2>
-<div id="0b708c4a" class="cell" data-execution_count="2">
+</section>
+<section id="methodology-and-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="methodology-and-analysis">Methodology and Analysis</h2>
+<p>To help us understand whether a black background (Group B) leads to better user engagement and conversions ocmpared to a white background (Group A), the following analysis was performed:</p>
+<section id="exploratory-data-analysis-eda" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-data-analysis-eda">Exploratory Data Analysis (EDA)</h3>
+<p>Before conducting any statistical test, I explored the dataset to understand its structure and key distributions:</p>
+<ul>
+<li>Summary statistics were calculated for <strong>time spent</strong> on the website accross both groups</li>
+<li>boxplots and histograms were used to visualize the distribution of time spent</li>
+<li>Bar charts were created to compare conversion rates between groups</li>
+</ul>
+<div id="37346dba" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -298,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="41b3845c" class="cell" data-execution_count="3">
+<div id="dd1084b1" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot </span></span>
@@ -338,7 +398,10 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 </div>
 </div>
 </div>
-<div id="4c9a80ca" class="cell" data-execution_count="4">
+</section>
+<section id="hypothesis-testing" class="level3">
+<h3 class="anchored" data-anchor-id="hypothesis-testing">Hypothesis Testing</h3>
+<div id="3ac7ddd0" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>group_A <span class="op">=</span> df[df[<span class="st">"Group"</span>] <span class="op">==</span> <span class="st">"A"</span>][<span class="st">"Time Spent"</span>]</span>
@@ -360,89 +423,14 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <pre><code>-0.4694926489675219 0.6387380383087231</code></pre>
 </div>
 </div>
-<div id="8b1b88be" class="cell" data-execution_count="5">
+<div id="d04d13e3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Conversion column to binary (Yes = 1, No = 0)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Conversion"</span>] <span class="op">=</span> df[<span class="st">"Conversion"</span>].<span class="bu">map</span>({<span class="st">"Yes"</span>: <span class="dv">1</span>, <span class="st">"No"</span>: <span class="dv">0</span>})</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Conversion"</span>] <span class="op">=</span> df[<span class="st">"Conversion"</span>].<span class="bu">map</span>({<span class="st">"Yes"</span>: <span class="dv">1</span>, <span class="st">"No"</span>: <span class="dv">0</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">User ID</th>
-<th data-quarto-table-cell-role="th">Group</th>
-<th data-quarto-table-cell-role="th">Page Views</th>
-<th data-quarto-table-cell-role="th">Time Spent</th>
-<th data-quarto-table-cell-role="th">Conversion</th>
-<th data-quarto-table-cell-role="th">Device</th>
-<th data-quarto-table-cell-role="th">Location</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>14292</td>
-<td>B</td>
-<td>3</td>
-<td>424</td>
-<td>0</td>
-<td>Mobile</td>
-<td>Northern Ireland</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>11682</td>
-<td>A</td>
-<td>9</td>
-<td>342</td>
-<td>0</td>
-<td>Mobile</td>
-<td>Scotland</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>19825</td>
-<td>A</td>
-<td>2</td>
-<td>396</td>
-<td>0</td>
-<td>Desktop</td>
-<td>Northern Ireland</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>16080</td>
-<td>B</td>
-<td>4</td>
-<td>318</td>
-<td>0</td>
-<td>Desktop</td>
-<td>Wales</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>18851</td>
-<td>A</td>
-<td>1</td>
-<td>338</td>
-<td>1</td>
-<td>Desktop</td>
-<td>Scotland</td>
-</tr>
-</tbody>
-</table>
-
 </div>
-</div>
-</div>
-<div id="1764cc71" class="cell" data-execution_count="6">
+<div id="ff95bd69" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate conversion rates for each group</span></span>
@@ -479,7 +467,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 </div>
 </div>
 </div>
-<div id="4175178e" class="cell" data-execution_count="7">
+<div id="c144682c" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform a chi-square test for conversion rates</span></span>
@@ -489,12 +477,16 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display conversion rates and test results</span></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>chi2_stat, p_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>(106.22812337440538, 6.571736018334222e-25)</code></pre>
 </div>
 </div>
+</section>
+<section id="results-and-visualizations" class="level3">
+<h3 class="anchored" data-anchor-id="results-and-visualizations">Results and Visualizations</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
