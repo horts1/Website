@@ -74,14 +74,14 @@
     "href": "Projects.html#python-projects",
     "title": "Projects",
     "section": "Python Projects:",
-    "text": "Python Projects:\nInsert Links"
+    "text": "Python Projects:\n\nShady Business: Testing the Power of Dark mode\ninsert link"
   },
   {
     "objectID": "python/index.html",
     "href": "python/index.html",
     "title": "Python Projects",
     "section": "",
-    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\nLoan Status\nTime Series Example\nProject Risk Example\nProject Resource Allocation Example\nProject Cost Example"
+    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis\n\n\n\n\n\nShady Business: Testing the Power of Dark mode\nLoan Status\nTime Series Example\nProject Risk Example\nProject Resource Allocation Example\nProject Cost Example"
   },
   {
     "objectID": "python/Project_Resource.html",
@@ -103,5 +103,19 @@
     "title": "R Studio Projects",
     "section": "",
     "text": "From Data to Diagnosis: Predicting Heart Disease Severity through Machine Learning"
+  },
+  {
+    "objectID": "python/abTest.html",
+    "href": "python/abTest.html",
+    "title": "Shady Business: Testing the Power of Dark mode",
+    "section": "",
+    "text": "Code\nimport pandas as pd\nimport os\nos.getcwd()\ndf = pd.read_csv(\n    'c:\\\\Users\\\\HoraceTsai\\\\Documents\\\\data\\\\ab_testing.csv'\n)\ndf.head()\n\n\n\n\n\n\n\n\n\nUser ID\nGroup\nPage Views\nTime Spent\nConversion\nDevice\nLocation\n\n\n\n\n0\n14292\nB\n3\n424\nNo\nMobile\nNorthern Ireland\n\n\n1\n11682\nA\n9\n342\nNo\nMobile\nScotland\n\n\n2\n19825\nA\n2\n396\nNo\nDesktop\nNorthern Ireland\n\n\n3\n16080\nB\n4\n318\nNo\nDesktop\nWales\n\n\n4\n18851\nA\n1\n338\nYes\nDesktop\nScotland"
+  },
+  {
+    "objectID": "python/abTest.html#exploratory-data-analysis",
+    "href": "python/abTest.html#exploratory-data-analysis",
+    "title": "Shady Business: Testing the Power of Dark mode",
+    "section": "Exploratory Data Analysis",
+    "text": "Exploratory Data Analysis\n\n\nCode\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport scipy.stats as stats\n\nsummary_stats = df.groupby(\"Group\")[\"Time Spent\"].describe()\nsummary_stats\n\n#plot \nplt.figure(figsize=(10,6))\nsns.boxplot(\n    x = \"Group\",\n    y = \"Time Spent\",\n    data = df,\n    order = [\"A\", \"B\"],\n    palette = \"Accent\"\n)\nplt.title(\"Distribution of Time Spent by Group\")\nplt.xlabel(\"Group\")\nplt.ylabel(\"Time Spent (seconds)\")\nplt.grid(False)\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n#plot \nplt.figure(figsize=(10,6))\nsns.histplot(\n    df,\n    x = \"Time Spent\",\n    hue = \"Group\",\n    kde = True,\n    bins = 30,\n    palette = \"Accent\",\n    alpha = 0.6,\n)\nplt.title(\"Distribution of Time Spent by Group\")\nplt.xlabel(\"Group\")\nplt.ylabel(\"Frequency\")\nplt.legend(title=\"Group\", \n    labels=[\"A (White Background)\", \"B (Black Background)\"], \n    loc='upper left',\n    bbox_to_anchor=(1, 1)\n    )\nplt.grid(False)\nplt.show()\n# fairly similar distribution\n\n\nC:\\Users\\HoraceTsai\\anaconda3\\Lib\\site-packages\\seaborn\\_oldcore.py:1119: FutureWarning:\n\nuse_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.\n\n\n\n\n\n\n\n\n\n\n\n\nCode\ngroup_A = df[df[\"Group\"] == \"A\"][\"Time Spent\"]\ngroup_B = df[df[\"Group\"] == \"B\"][\"Time Spent\"]\n\nt_stat, p_val = stats.ttest_ind(\n    group_A, \n    group_B,\n    equal_var = False\n    )\n\nprint(t_stat, p_val)\n# small t- stat meaning group a (white) has a slightly higher mean of time spent vs group B\n# however difference between the two gorups is not large compared to the variability of the data\n# therefore no signif diff between background colors \n# changing website background does not meaningfully affect how long users stay\n\n\n-0.4694926489675219 0.6387380383087231\n\n\n\n\nCode\n# Convert Conversion column to binary (Yes = 1, No = 0)\ndf[\"Conversion\"] = df[\"Conversion\"].map({\"Yes\": 1, \"No\": 0})\n\ndf.head()\n\n\n\n\n\n\n\n\n\nUser ID\nGroup\nPage Views\nTime Spent\nConversion\nDevice\nLocation\n\n\n\n\n0\n14292\nB\n3\n424\n0\nMobile\nNorthern Ireland\n\n\n1\n11682\nA\n9\n342\n0\nMobile\nScotland\n\n\n2\n19825\nA\n2\n396\n0\nDesktop\nNorthern Ireland\n\n\n3\n16080\nB\n4\n318\n0\nDesktop\nWales\n\n\n4\n18851\nA\n1\n338\n1\nDesktop\nScotland\n\n\n\n\n\n\n\n\n\nCode\n# Calculate conversion rates for each group\nconversion_rates = df.groupby(\"Group\")[\"Conversion\"].mean().reset_index()\n\n# bar plot for conversion rates\nplt.figure(figsize =(8,5))\nsns.barplot(\n    x = \"Group\",\n    y = \"Conversion\",\n    data = conversion_rates,\n    palette = \"Accent\"\n)\n\n# Add annotations\nfor index, row in conversion_rates.iterrows():\n    plt.text(index, row[\"Conversion\"] + 0.01, f\"{row['Conversion']*100:.2f}%\", ha='center', fontsize=12)\n\n# Formatting the plot\nplt.title(\"Conversion Rate by Group (A vs. B)\")\nplt.xlabel(\"Group\")\nplt.ylabel(\"Conversion Rate\")\nplt.ylim(0, 1)  # Ensuring y-axis goes from 0 to 1 (100% scale)\nplt.grid(axis='y', linestyle='--', alpha=0.7)\n\n# Show the plot\nplt.show()\n\n\n\n\n\n\n\n\n\n\n\nCode\n# Perform a chi-square test for conversion rates\ncontingency_table = pd.crosstab(df[\"Group\"], df[\"Conversion\"])\nchi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)\n\n# Display conversion rates and test results\nchi2_stat, p_value\n\n\n(106.22812337440538, 6.571736018334222e-25)"
   }
 ]
