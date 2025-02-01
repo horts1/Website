@@ -4,6 +4,7 @@ format:
   html:
     code-fold: true
 jupyter: python3
+warning: false
 ---
 
 ## Objective
@@ -31,6 +32,17 @@ Research Question: *Does changing the website background color influence user en
 - Device: Type of device used (e.g. Mobile, Desktop)
 - Location: The country in the UK where the user is based 
 
+```{python}
+
+import pandas as pd
+import os
+os.getcwd()
+df = pd.read_csv(
+    'c:\\Users\\HoraceTsai\\Documents\\data\\ab_testing.csv'
+)
+df.head()
+```
+
 ## Statistical Methods Used
 
 To evaluate the impact of the background color change, I used: 
@@ -40,18 +52,8 @@ To evaluate the impact of the background color change, I used:
 
 ## Significance of the Study
 
-A/B test is a crucial tool in user experience (UX) optimizatino and digital marketing. Findings from analysis such as this could help business make data-driven design decisions that enhance user engagement and improve conversion rates. 
+A/B test is a crucial tool in user experience (UX) optimization and digital marketing. Findings from analysis such as this could help business make data-driven design decisions that enhance user engagement and improve conversion rates. 
 
-```{python}
-import pandas as pd
-import os
-os.getcwd()
-df = pd.read_csv(
-    'c:\\Users\\HoraceTsai\\Documents\\data\\ab_testing.csv'
-)
-df.head()
-
-```
 ## Methodology and Analysis
 
 To help us understand whether a black background (Group B) leads to better user engagement and conversions ocmpared to a white background (Group A), the following analysis was performed: 
@@ -65,6 +67,18 @@ Before conducting any statistical test, I explored the dataset to understand its
 - Bar charts were created to compare conversion rates between groups
 
 ```{python}
+from tabulate import tabulate
+summary_stats = df.groupby("Group")["Time Spent"].describe()
+
+print(tabulate(
+    summary_stats,
+    headers= 'keys',
+    tablefmt= 'pretty'))
+```
+
+```{python}
+#| label: boxplot
+#| fig-cap: "Boxplot Distribution of Time Spent by Group"
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.stats as stats
@@ -73,7 +87,7 @@ summary_stats = df.groupby("Group")["Time Spent"].describe()
 summary_stats
 
 #plot 
-plt.figure(figsize=(10,6))
+plt.figure(figsize=(7,5))
 sns.boxplot(
     x = "Group",
     y = "Time Spent",
@@ -88,9 +102,16 @@ plt.grid(False)
 plt.show()
 ```
 
+From the boxplots shown above we see the following:
+
+- The distributions of time spent in both groups are almost identitcal
+- The median interquartile (IQR) ranges are similar
+
 ```{python}
+#| label: histplot
+#| fig-cap: "Histogram Distribution of Time Spent by Group"
 #plot 
-plt.figure(figsize=(10,6))
+plt.figure(figsize=(7,5))
 sns.histplot(
     df,
     x = "Time Spent",
@@ -113,36 +134,22 @@ plt.show()
 # fairly similar distribution
 ```
 
-### Hypothesis Testing 
+From the histograms shown above we see the following:
+
+- The distributions of time spent across both groups overlap heavily
+- Both groups have simialr spread and density
 
 ```{python}
-group_A = df[df["Group"] == "A"]["Time Spent"]
-group_B = df[df["Group"] == "B"]["Time Spent"]
-
-t_stat, p_val = stats.ttest_ind(
-    group_A, 
-    group_B,
-    equal_var = False
-    )
-
-print(t_stat, p_val)
-# small t- stat meaning group a (white) has a slightly higher mean of time spent vs group B
-# however difference between the two gorups is not large compared to the variability of the data
-# therefore no signif diff between background colors 
-# changing website background does not meaningfully affect how long users stay
-```
-
-```{python}
+#| label: barplot
+#| fig-cap: "Conversion Rate by Group"
 # Convert Conversion column to binary (Yes = 1, No = 0)
 df["Conversion"] = df["Conversion"].map({"Yes": 1, "No": 0})
-```
 
-```{python}
 # Calculate conversion rates for each group
 conversion_rates = df.groupby("Group")["Conversion"].mean().reset_index()
 
 # bar plot for conversion rates
-plt.figure(figsize =(8,5))
+plt.figure(figsize =(7,5))
 sns.barplot(
     x = "Group",
     y = "Conversion",
@@ -165,13 +172,48 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.show()
 ```
 
+The bar chart above shows that Group B (Black Blackground) has a significantly higher conversion rate compared to Group A.
+
+### Hypothesis Testing 
+
+```{python}
+group_A = df[df["Group"] == "A"]["Time Spent"]
+group_B = df[df["Group"] == "B"]["Time Spent"]
+
+t_stat, p_val = stats.ttest_ind(
+    group_A, 
+    group_B,
+    equal_var = False
+    )
+
+print(f" T- Statistic: {t_stat}, p-value: {p_val}")
+# small t- stat meaning group a (white) has a slightly higher mean of time spent vs group B
+# however difference between the two gorups is not large compared to the variability of the data
+# therefore no signif diff between background colors 
+# changing website background does not meaningfully affect how long users stay
+```
+
+With a small T- statistic and a high p-value, there is no statistically significant difference in the time spent between the two groups. We can say that changing the website background does not meaningfully affect how long users stay.
+
+
 ```{python}
 # Perform a chi-square test for conversion rates
 contingency_table = pd.crosstab(df["Group"], df["Conversion"])
 chi2_stat, p_value, dof, expected = stats.chi2_contingency(contingency_table)
 
 # Display conversion rates and test results
-chi2_stat, p_value
+print(f"Chi-Square: {chi2_stat}, p-value: {p_value}")
 ```
 
-### Results and Visualizations
+Wtih a high Chi-Squared value and an extremely low p-value, there is a statisitcally difference in conversion rates between the two groups. We can say here that changeing the website background does affect whether the user completed a desired action (e.g. made a purchase, sign up, etc.)
+
+### Key Takeaways
+
+- **Time Spent on Website:** No significant difference between groups, suggest that background color does not affect user engagement duration.
+- **Conversion Rate:** The black background (Group B) led to a significantly higher conversion rate, indicating that users were more likely to complete a desired action (e.g. made a purchase, sign up, etc.) when the background was black.
+
+### Conclusion and Recommendations
+
+- Since the black background (Group B) significantly improves conversion rates without negatively affect time spent, I would recommend to implement the black blackgorund as the default design to enhance user performance.
+
+- Further testing could be done to analyze other UX factors, such as font color, button placement, or layout changes to maximize user engagement and conversion rates.
