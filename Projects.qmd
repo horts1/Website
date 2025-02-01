@@ -13,4 +13,4 @@ Here are the links to some of my projects:
 
 ### [Shady Business: Testing the Power of Dark mode](/python/abTest.qmd)
 
--   *insert link*
+### [NBA Player Stats Explorer](https://basketball-streamlit-7b00e1f5f4fb.herokuapp.com/)
