@@ -14,6 +14,8 @@ Here are the links to some of my projects:
 ### [Shady Business: Testing the Power of Dark mode](/python/abTest.qmd)
 
 ### [NBA Player Stats Explorer](https://basketball-streamlit-7b00e1f5f4fb.herokuapp.com/)
+- Username: user
+- Password: basketball
 
 ### [NCAA Men's Basketball Stats Explorer and Score Predictions](https://ncaa-basketball-streamlit-4740830175f0.herokuapp.com/)
 - Username: user
