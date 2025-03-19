@@ -15,4 +15,8 @@ Here are the links to some of my projects:
 
 ### [NBA Player Stats Explorer](https://basketball-streamlit-7b00e1f5f4fb.herokuapp.com/)
 
-- *insert link*
+### [NCAA Men's Basketball Stats Explorer and Score Predictions](https://ncaa-basketball-streamlit-4740830175f0.herokuapp.com/)
+- Username: user
+- Password: NCAA
+
+### More to Come!
