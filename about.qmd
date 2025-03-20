@@ -13,7 +13,7 @@ toc: false
 
 ## About Me
 
-Welcome to my professional portfolio! I am Horace Tsai, a recent graduate from California State University, Fullerton (CSUF) with a Master of Science in Statistics. In 2019, received my Bachelor of Arts in Economics with a double minor in Accounting and Statistics at the University of California, Irvine (UCI). 
+Welcome to my professional portfolio! I am Horace Tsai, a recent graduate from California State University, Fullerton (CSUF) with a Master of Science in Statistics. In 2019, received my Bachelor of Arts in Economics with a double minor in Accounting and Statistics at the University of California, Irvine (UCI).
 
 Currently, I am working as an Associate Program Manager, where I leverage my analytics skills and passion for data to impactfully drive projects and deliver actionable insights.
 
@@ -23,4 +23,4 @@ My professional aspiration is to transition into a full-fledged data scientist r
 
 From exploratory data analysis to building machine learning models, my projects highlight my technical expertise and my ability to translate data into strategic business value. I invite you to explore my work, and I am always open to connecting with like-minded professionals and potential collaborators.
 
-Thank you for visiting, and I look forward to sharing my journey with you!
+Thank you for visiting, and I look forward to sharing my findings with you!
